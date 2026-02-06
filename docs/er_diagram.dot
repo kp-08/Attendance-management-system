@@ -1,0 +1,119 @@
+// Attendance Management System ER Diagram
+graph {
+	overlap=false sep="+25,25" splines=true
+	node [fontname=Arial fontsize=10]
+	edge [fontname=Arial fontsize=9]
+	Employee [label=Employee fillcolor=white penwidth=2 shape=box style=filled]
+	Department [label=Department fillcolor=white penwidth=2 shape=box style=filled]
+	AttendanceRecord [label="Attendance
+Record" fillcolor=white penwidth=2 shape=box style=filled]
+	AttendanceEntry [label="Attendance
+Entry" fillcolor=white penwidth=2 shape=box style=filled]
+	LeaveRequest [label="Leave
+Request" fillcolor=white penwidth=2 shape=box style=filled]
+	LeaveType [label="Leave
+Type" fillcolor=white penwidth=2 shape=box style=filled]
+	LeaveBalance [label="Leave
+Balance" fillcolor=white penwidth=2 shape=box style=filled]
+	Holiday [label=Holiday fillcolor=white penwidth=2 shape=box style=filled]
+	emp_id [label=<<u>id</u>> fillcolor=white fontsize=9 shape=ellipse style=filled]
+	emp_first_name [label=first_name fillcolor=white fontsize=9 shape=ellipse style=filled]
+	emp_last_name [label=last_name fillcolor=white fontsize=9 shape=ellipse style=filled]
+	emp_email [label=<<u>email</u>> fillcolor=white fontsize=9 shape=ellipse style=filled]
+	emp_password [label=password_hash fillcolor=white fontsize=9 shape=ellipse style=filled]
+	emp_phone [label=phone fillcolor=white fontsize=9 shape=ellipse style=filled]
+	emp_designation [label=designation fillcolor=white fontsize=9 shape=ellipse style=filled]
+	emp_role [label=role fillcolor=white fontsize=9 shape=ellipse style=filled]
+	emp_is_active [label=is_active fillcolor=white fontsize=9 shape=ellipse style=filled]
+	Employee -- emp_id
+	Employee -- emp_first_name
+	Employee -- emp_last_name
+	Employee -- emp_email
+	Employee -- emp_password
+	Employee -- emp_phone
+	Employee -- emp_designation
+	Employee -- emp_role
+	Employee -- emp_is_active
+	dept_id [label=<<u>id</u>> fillcolor=white fontsize=9 shape=ellipse style=filled]
+	dept_name [label=name fillcolor=white fontsize=9 shape=ellipse style=filled]
+	Department -- dept_id
+	Department -- dept_name
+	att_id [label=<<u>id</u>> fillcolor=white fontsize=9 shape=ellipse style=filled]
+	att_date [label=date fillcolor=white fontsize=9 shape=ellipse style=filled]
+	att_check_in [label=check_in_time fillcolor=white fontsize=9 shape=ellipse style=filled]
+	att_check_out [label=check_out_time fillcolor=white fontsize=9 shape=ellipse style=filled]
+	att_status [label=status fillcolor=white fontsize=9 shape=ellipse style=filled]
+	att_approval [label=approval_status fillcolor=white fontsize=9 shape=ellipse style=filled]
+	att_confirmed [label=is_confirmed fillcolor=white fontsize=9 shape=ellipse style=filled]
+	AttendanceRecord -- att_id
+	AttendanceRecord -- att_date
+	AttendanceRecord -- att_check_in
+	AttendanceRecord -- att_check_out
+	AttendanceRecord -- att_status
+	AttendanceRecord -- att_approval
+	AttendanceRecord -- att_confirmed
+	entry_id [label=<<u>id</u>> fillcolor=white fontsize=9 shape=ellipse style=filled]
+	entry_type [label=entry_type fillcolor=white fontsize=9 shape=ellipse style=filled]
+	entry_timestamp [label=timestamp fillcolor=white fontsize=9 shape=ellipse style=filled]
+	entry_reason [label=reason fillcolor=white fontsize=9 shape=ellipse style=filled]
+	AttendanceEntry -- entry_id
+	AttendanceEntry -- entry_type
+	AttendanceEntry -- entry_timestamp
+	AttendanceEntry -- entry_reason
+	lr_id [label=<<u>id</u>> fillcolor=white fontsize=9 shape=ellipse style=filled]
+	lr_start [label=start_date fillcolor=white fontsize=9 shape=ellipse style=filled]
+	lr_end [label=end_date fillcolor=white fontsize=9 shape=ellipse style=filled]
+	lr_reason [label=reason fillcolor=white fontsize=9 shape=ellipse style=filled]
+	lr_status [label=status fillcolor=white fontsize=9 shape=ellipse style=filled]
+	lr_applied [label=applied_at fillcolor=white fontsize=9 shape=ellipse style=filled]
+	LeaveRequest -- lr_id
+	LeaveRequest -- lr_start
+	LeaveRequest -- lr_end
+	LeaveRequest -- lr_reason
+	LeaveRequest -- lr_status
+	LeaveRequest -- lr_applied
+	lt_id [label=<<u>id</u>> fillcolor=white fontsize=9 shape=ellipse style=filled]
+	lt_name [label=name fillcolor=white fontsize=9 shape=ellipse style=filled]
+	LeaveType -- lt_id
+	LeaveType -- lt_name
+	lb_id [label=<<u>id</u>> fillcolor=white fontsize=9 shape=ellipse style=filled]
+	lb_year [label=year fillcolor=white fontsize=9 shape=ellipse style=filled]
+	lb_total [label=total_leaves fillcolor=white fontsize=9 shape=ellipse style=filled]
+	lb_used [label=used_leaves fillcolor=white fontsize=9 shape=ellipse style=filled]
+	lb_remaining [label=remaining_leaves fillcolor=white fontsize=9 shape=ellipse style=filled]
+	LeaveBalance -- lb_id
+	LeaveBalance -- lb_year
+	LeaveBalance -- lb_total
+	LeaveBalance -- lb_used
+	LeaveBalance -- lb_remaining
+	hol_id [label=<<u>id</u>> fillcolor=white fontsize=9 shape=ellipse style=filled]
+	hol_name [label=name fillcolor=white fontsize=9 shape=ellipse style=filled]
+	hol_date [label=date fillcolor=white fontsize=9 shape=ellipse style=filled]
+	hol_desc [label=description fillcolor=white fontsize=9 shape=ellipse style=filled]
+	Holiday -- hol_id
+	Holiday -- hol_name
+	Holiday -- hol_date
+	Holiday -- hol_desc
+	R_belongs_to [label="belongs to" fillcolor=white penwidth=2 shape=diamond style=filled]
+	Employee -- R_belongs_to [label=n]
+	R_belongs_to -- Department [label=1]
+	R_reports_to [label="reports to" fillcolor=white penwidth=2 shape=diamond style=filled]
+	Employee -- R_reports_to [label=n]
+	R_reports_to -- Employee [label=1]
+	R_has_attendance [label=has fillcolor=white penwidth=2 shape=diamond style=filled]
+	Employee -- R_has_attendance [label=1]
+	R_has_attendance -- AttendanceRecord [label=n]
+	R_contains [label=contains fillcolor=white penwidth=2 shape=diamond style=filled]
+	AttendanceRecord -- R_contains [label=1]
+	R_contains -- AttendanceEntry [label=n]
+	R_requests [label=requests fillcolor=white penwidth=2 shape=diamond style=filled]
+	Employee -- R_requests [label=1]
+	R_requests -- LeaveRequest [label=n]
+	R_of_type [label="of type" fillcolor=white penwidth=2 shape=diamond style=filled]
+	LeaveRequest -- R_of_type [label=n]
+	R_of_type -- LeaveType [label=1]
+	R_has_balance [label="has balance" fillcolor=white penwidth=2 shape=diamond style=filled]
+	Employee -- R_has_balance [label=1]
+	R_has_balance -- LeaveBalance [label=n]
+	fontname="Arial Bold" fontsize=16 label="\n\nAttendance Management System\nER Diagram\n"
+}
