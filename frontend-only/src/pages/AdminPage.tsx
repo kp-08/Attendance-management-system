@@ -309,7 +309,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ users, setUsers, onOnboard, propo
            <div className="lg:col-span-12 bg-white rounded-[40px] p-12 border border-slate-50 shadow-xl shadow-slate-200/50">
               <h3 className="text-2xl font-extrabold text-slate-900 mb-10">Global Temporal Audit</h3>
               <div className="space-y-4">
-                 {attendance.filter(a => a.approvalStatus === 'Pending_Admin').map(a => (
+                 {attendance.filter(a => a.approvalStatus === 'Pending_Admin' || a.approvalStatus === 'Pending_Manager').map(a => (
                    <div key={a.id} className="p-8 bg-slate-50/50 rounded-[32px] flex items-center justify-between border border-transparent hover:border-indigo-100 hover:bg-white transition-all shadow-sm">
                       <div className="flex items-center gap-6">
                         <div className="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-indigo-600 text-2xl font-extrabold border border-slate-100">{a.employeeName.charAt(0)}</div>
@@ -321,10 +321,10 @@ const AdminPage: React.FC<AdminPageProps> = ({ users, setUsers, onOnboard, propo
                            </div>
                         </div>
                       </div>
-                      <button onClick={() => setAttendance(a.id, 'Approved')} className="bg-indigo-600 text-white px-10 py-5 rounded-3xl font-extrabold text-[10px] uppercase tracking-widest shadow-xl shadow-indigo-200 hover:bg-indigo-700 transition-all">Verify Temporal Record</button>
+                      <button onClick={() => setAttendance(a.id, 'Approved')} className="bg-indigo-600 text-white px-10 py-5 rounded-3xl font-extrabold text-[10px] uppercase tracking-widest shadow-xl shadow-indigo-200 hover:bg-indigo-700 transition-all">{a.approvalStatus === 'Pending_Manager' ? 'Verify & Approve' : 'Approve'}</button>
                    </div>
                  ))}
-                 {attendance.filter(a => a.approvalStatus === 'Pending_Admin').length === 0 && (
+                 {attendance.filter(a => a.approvalStatus === 'Pending_Admin' || a.approvalStatus === 'Pending_Manager').length === 0 && (
                    <div className="py-32 text-center text-slate-300 font-bold text-sm">All temporal logs are fully verified.</div>
                  )}
               </div>
